@@ -6,8 +6,8 @@ const heartbeats = require('heartbeats');
 
 dotenv.config();
 
-const milliSec: number = 1000;
-const heart = heartbeats.createHeart(milliSec);
+const MILLI_SEC: number = 1000;
+const heart = heartbeats.createHeart(MILLI_SEC);
 
 let con: mysql.Connection;
 
