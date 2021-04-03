@@ -1,0 +1,35 @@
+{
+  "name": "heartbeat-alert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisNaldo7/heartbeat-alert.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisNaldo7/heartbeat-alert/issues"
+  },
+  "homepage": "https://github.com/LuisNaldo7/heartbeat-alert#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "heartbeats": "^5.0.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.5.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.3"
+  },
+  "devDependencies": {
+    "@types/mysql": "^2.15.18",
+    "@types/node": "^14.14.37",
+    "@types/nodemailer": "^6.4.1"
+  }
+}
