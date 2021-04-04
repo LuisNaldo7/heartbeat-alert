@@ -18,7 +18,7 @@ export function getConnection(): mysql.Connection {
 }
 
 export function getDatasets(con: mysql.Connection): Promise<any> {
-  let sql = 'SELECT * FROM devices;';
+  let sql = 'SELECT * FROM devices WHERE enabled = true;';
 
   return new Promise<any>((resolve, reject) => {
     con.query(sql, (err, result) => {
