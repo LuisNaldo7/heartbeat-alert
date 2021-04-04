@@ -6,12 +6,12 @@ const heartbeats = require('heartbeats');
 
 dotenv.config();
 
-const MILLI_SEC: number = 1000;
-const heart = heartbeats.createHeart(MILLI_SEC);
+const MILLI_SECS: number = 1000;
+const heart = heartbeats.createHeart(MILLI_SECS);
 
 let con: mysql.Connection;
 
-heart.createEvent(3, () => {
+heart.createEvent(5, async () => {
   try {
     if (
       con == null ||
@@ -21,12 +21,23 @@ heart.createEvent(3, () => {
       con = getConnection();
     }
 
-    let datasets = getDatasets(con);
-
-    if (true) {
-      sendMail();
-    }
+    let tsUnix = new Date(Date.now()).getTime() / 1000;
+    await getDatasets(con).then((res) => {
+      for (let i = 0; i < res.length; i++) {
+        if (res[i].last_seen) {
+          let datasetTsUnix = new Date(res[i].last_seen).getTime();
+          let diffSecs = Math.abs(tsUnix - datasetTsUnix);
+          if (res[i].max_timeout < diffSecs) {
+            let datasetTs = new Date(datasetTsUnix * 1000);
+            let alertText: string =
+              res[i].description + ' last seen: ' + datasetTs;
+            console.log(alertText);
+            sendMail(alertText);
+          }
+        }
+      }
+    });
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });

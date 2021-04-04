@@ -17,14 +17,16 @@ export function getConnection(): mysql.Connection {
   return con;
 }
 
-export function getDatasets(con: mysql.Connection) {
-  const sql = 'SELECT * FROM devices;';
+export function getDatasets(con: mysql.Connection): Promise<any> {
+  let sql = 'SELECT * FROM devices;';
 
-  con.query(sql, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(result);
-    }
+  return new Promise<any>((resolve, reject) => {
+    con.query(sql, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
   });
 }
