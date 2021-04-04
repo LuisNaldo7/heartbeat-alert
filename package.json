@@ -2,9 +2,9 @@
   "name": "heartbeat-alert",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/main",
   "scripts": {
-    "start": "tsc && node dist/index.js",
+    "start": "tsc && node dist/main",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.ts\""
