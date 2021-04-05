@@ -17,8 +17,35 @@ export function getConnection(): mysql.Connection {
   return con;
 }
 
-export function getDatasets(con: mysql.Connection): Promise<any> {
+export function getDevices(con: mysql.Connection): Promise<any> {
   let sql = 'SELECT * FROM devices WHERE enabled = true;';
+
+  return new Promise<any>((resolve, reject) => {
+    con.query(sql, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+export function updateMailSent(
+  con: mysql.Connection,
+  guid: string,
+  mailSent: boolean,
+): Promise<any> {
+  const sql =
+    'UPDATE devices ' +
+    'SET ' +
+    'mail_sent = ' +
+    mailSent +
+    ' ' +
+    'WHERE ' +
+    "guid = '" +
+    guid +
+    "';";
 
   return new Promise<any>((resolve, reject) => {
     con.query(sql, (err, result) => {
