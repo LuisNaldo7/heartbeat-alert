@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
 export async function sendMail(body: string): Promise<boolean> {
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     host: process.env.HEARTBEAT_MAIL_HOST,
     port: JSON.parse(process.env.HEARTBEAT_MAIL_PORT || '587'),
     requireTLS: JSON.parse(process.env.HEARTBEAT_MAIL_TLS || 'true'),
