@@ -21,7 +21,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig*.json ./
 
-RUN npm install
+RUN npm ci --only=production
 
 # Bundle app source
 COPY ./src ./src
