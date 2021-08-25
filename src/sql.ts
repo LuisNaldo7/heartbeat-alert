@@ -21,7 +21,7 @@ export function getConnection(): mysql.Connection {
 }
 
 export function getDevices(con: mysql.Connection): Promise<any> {
-  const sql = 'SELECT * FROM devices WHERE enabled = true;';
+  const sql = 'SELECT * FROM device WHERE enabled = true;';
 
   return new Promise<any>((resolve, reject) => {
     con.query(sql, (err, result) => {
@@ -40,7 +40,7 @@ export function updateMailSent(
   mailSent: boolean,
 ): Promise<any> {
   const sql =
-    'UPDATE devices ' +
+    'UPDATE device ' +
     'SET ' +
     'mail_sent = ' +
     mailSent +
