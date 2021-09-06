@@ -9,6 +9,7 @@ ENV TYPEORM_DATABASE=heartbeat
 ENV TYPEORM_SYNCHRONIZE=false
 ENV TYPEORM_LOGGING=false
 ENV TYPEORM_ENTITIES=dist/**/*.entity.js
+ENV TYPEORM_DRIVER_EXTRA='{ "ssl": { "rejectUnauthorized": false } }'
 
 ENV HEARTBEAT_MAIL_HOST='smtp.gmail.com'
 ENV HEARTBEAT_MAIL_PORT=587
