@@ -19,6 +19,8 @@ ENV HEARTBEAT_MAIL_TLS=true
 ENV HEARTBEAT_MAIL_TO='mail@example.com'
 ENV HEARTBEAT_MAIL_SUBJECT='Heartbeat Alert!!!'
 
+ENV HEARTBEAT_DASHBOARD_URL=''
+
 # Create app directory
 WORKDIR /app
 
