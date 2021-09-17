@@ -31,8 +31,11 @@ createConnection()
             ) {
               const datasetTs = new Date(datasetTsUnix * 1000);
               const alertText: string =
-                device.description + ' last seen: ' + datasetTs + 
-                '\n\ndashboard: ' + process.env.HEARTBEAT_DASHBOARD_URL
+                device.description +
+                ' last seen: ' +
+                datasetTs +
+                '\n\ndashboard: ' +
+                process.env.HEARTBEAT_DASHBOARD_URL;
               console.info(alertText);
 
               const mailSent = await sendMail(alertText);
