@@ -26,10 +26,15 @@ export class DeviceEntity {
   })
   type?: string;
   @Column({
-    name: 'mail_sent',
+    name: 'alert_sent_mail',
     default: false,
   })
-  mailSent?: boolean;
+  alertSentMail?: boolean;
+  @Column({
+    name: 'alert_sent_discord',
+    default: false,
+  })
+  alertSentDiscord?: boolean;
   @Column({
     name: 'enabled',
     default: false,

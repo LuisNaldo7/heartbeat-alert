@@ -43,10 +43,10 @@ docker build -t luisnaldo7/heartbeat-alert:latest .
 
 execute container
 ```bash 
-docker run -d -e HEARTBEAT_DB_HOST="localhost" -e HEARTBEAT_DB_PASSWORD="pass" -e HEARTBEAT_MAIL_FROM="mail@example.com" -e HEARTBEAT_MAIL_PASSWORD="pass" -e HEARTBEAT_MAIL_TO="mail@example.com" --rm --name heartbeat-alert luisnaldo7/heartbeat-alert:latest
+docker run -d -e TYPEORM_HOST="localhost" -e TYPEORM_PASSWORD="pass" -e DISCORD_ENABLED="true" -e DISCORD_WEBHOOK_CLIENT_ID="123456789012345678" -e DISCORD_WEBHOOK_CLIENT_TOKEN="vg5k_jAR...BKg" --rm --name heartbeat-alert luisnaldo7/heartbeat-alert:latest
 ```
 
 execute container on boot
 ```bash 
-docker run -d -e HEARTBEAT_DB_HOST="localhost" -e HEARTBEAT_DB_PASSWORD="pass" -e HEARTBEAT_MAIL_FROM="mail@example.com" -e HEARTBEAT_MAIL_PASSWORD="pass" -e HEARTBEAT_MAIL_TO="mail@example.com" --restart always --name heartbeat-alert luisnaldo7/heartbeat-alert:latest
+docker run -d -e TYPEORM_HOST="localhost" -e TYPEORM_PASSWORD="pass" -e DISCORD_ENABLED="true" -e DISCORD_WEBHOOK_CLIENT_ID="123456789012345678" -e DISCORD_WEBHOOK_CLIENT_TOKEN="vg5k_jAR...BKg" --restart always --name heartbeat-alert luisnaldo7/heartbeat-alert:latest
 ```
