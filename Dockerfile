@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:16.13.1
 
 ENV TYPEORM_CONNECTION=mysql
 ENV TYPEORM_HOST=localhost
@@ -30,9 +30,7 @@ ENV HEARTBEAT_DASHBOARD_URL=''
 WORKDIR /app
 
 # Install app dependencies
-COPY package*.json ./
-COPY tsconfig*.json ./
-
+COPY tsconfig*.json package*.json ./
 RUN npm ci --only=production
 
 # Bundle app source
