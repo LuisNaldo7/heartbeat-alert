@@ -19,6 +19,9 @@ RUN npm run build
 # Run stage
 FROM node:16.13.1
 
+## Switch to less privileged user
+USER node
+
 ## Declare env vars
 ENV TYPEORM_CONNECTION=mysql
 ENV TYPEORM_HOST=localhost
