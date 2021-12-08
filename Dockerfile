@@ -1,5 +1,25 @@
+# Build stage
+FROM node:16.13.1 AS build
+
+## Create app directory
+WORKDIR /app
+
+## Install app dependencies
+COPY tsconfig*.json package*.json ./
+RUN npm ci --only=production
+
+## Bundle app source
+COPY ./src ./src
+
+## Build app
+RUN npm run build
+
+
+
+# Run stage
 FROM node:16.13.1
 
+## Declare env vars
 ENV TYPEORM_CONNECTION=mysql
 ENV TYPEORM_HOST=localhost
 ENV TYPEORM_PORT=3306
@@ -26,17 +46,12 @@ ENV DISCORD_WEBHOOK_CLIENT_TOKEN=vg5k_jAR...BKg
 
 ENV HEARTBEAT_DASHBOARD_URL=''
 
-# Create app directory
+## Create app directory
 WORKDIR /app
 
-# Install app dependencies
-COPY tsconfig*.json package*.json ./
-RUN npm ci --only=production
+## Copy app
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
 
-# Bundle app source
-COPY ./src ./src
-
-# Build app
-RUN npm run build
-
+## Execute app
 CMD [ "node", "dist/main"]
