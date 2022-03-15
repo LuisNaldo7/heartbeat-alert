@@ -15,38 +15,47 @@ Heartbeat-Alert triggers an alert mail when a [Heartbeat-Client](https://github.
 ![Diagram](https://github.com/LuisNaldo7/heartbeat-local-dev-env/blob/main/docs/components.png?raw=true)
 
 ---
+
 A full integration can be set up using the [Local Development Environment](https://github.com/LuisNaldo7/heartbeat-local-dev-env).
+
 ## Run
 
 Copy .env.example to .env and adjust values.
 
 install dependencies
-```bash
+
+```
 npm i
 ```
 
 start app
-```bash
+
+```
 npm start
 ```
+
 ## Run in Docker
 
 pull image
-```bash
+
+```
 docker pull luisnaldo7/heartbeat-alert:latest
 ```
 
 or build image
-```bash 
-docker build -t luisnaldo7/heartbeat-alert:latest .
+
+```
+docker build -t luisnaldo7/heartbeat-alert:latest -f docker/Dockerfile .
 ```
 
 execute container
-```bash 
+
+```
 docker run -d -e TYPEORM_HOST="localhost" -e TYPEORM_PASSWORD="pass" -e DISCORD_ENABLED="true" -e DISCORD_WEBHOOK_CLIENT_ID="123456789012345678" -e DISCORD_WEBHOOK_CLIENT_TOKEN="vg5k_jAR...BKg" --rm --name heartbeat-alert luisnaldo7/heartbeat-alert:latest
 ```
 
 execute container on boot
-```bash 
+
+```
 docker run -d -e TYPEORM_HOST="localhost" -e TYPEORM_PASSWORD="pass" -e DISCORD_ENABLED="true" -e DISCORD_WEBHOOK_CLIENT_ID="123456789012345678" -e DISCORD_WEBHOOK_CLIENT_TOKEN="vg5k_jAR...BKg" --restart always --name heartbeat-alert luisnaldo7/heartbeat-alert:latest
 ```
