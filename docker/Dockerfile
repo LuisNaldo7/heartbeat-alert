@@ -7,6 +7,7 @@ WORKDIR /app
 ## Install app dependencies
 COPY tsconfig*.json package*.json ./
 RUN npm ci --only=production
+RUN npm i -g typescript@4.5.5
 
 ## Bundle app source
 COPY ./src ./src
